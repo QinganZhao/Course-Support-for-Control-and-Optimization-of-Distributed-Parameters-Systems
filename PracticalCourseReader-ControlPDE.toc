@@ -1,0 +1,52 @@
+\contentsline {chapter}{Table of Contents}{iii}{chapter*.1}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Objectives}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}System description}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}System modeling}{2}{section.1.3}
+\contentsline {section}{\numberline {1.4}System explanation}{3}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Analysis}{3}{subsection.1.4.1}
+\contentsline {subsection}{\numberline {1.4.2}Simulation}{4}{subsection.1.4.2}
+\contentsline {subsection}{\numberline {1.4.3}Optimization or control}{4}{subsection.1.4.3}
+\contentsline {subsection}{\numberline {1.4.4}Visualization}{5}{subsection.1.4.4}
+\contentsline {chapter}{\numberline {2}Modeling}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}Objectives}{7}{section.2.1}
+\contentsline {section}{\numberline {2.2}Derivation of partial differential equations}{7}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}2D wave equation}{8}{subsection.2.2.1}
+\contentsline {paragraph}{Description}{8}{figure.2.1}
+\contentsline {paragraph}{Model}{8}{section*.3}
+\contentsline {subsection}{\numberline {2.2.2}2D heat diffusion}{11}{subsection.2.2.2}
+\contentsline {paragraph}{Description}{11}{section*.4}
+\contentsline {paragraph}{Model}{11}{section*.5}
+\contentsline {section}{\numberline {2.3}Manipulation of partial differential equations}{13}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Weak formulation}{13}{subsection.2.3.1}
+\contentsline {paragraph}{Objective}{13}{section*.6}
+\contentsline {paragraph}{Demonstration}{13}{section*.7}
+\contentsline {chapter}{\numberline {3}Simulation}{15}{chapter.3}
+\contentsline {section}{\numberline {3.1}Objectives}{15}{section.3.1}
+\contentsline {section}{\numberline {3.2}Simulation examples}{15}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Forward Euler simulation of the 1D heat equation}{15}{subsection.3.2.1}
+\contentsline {paragraph}{Model presentation}{16}{figure.3.1}
+\contentsline {paragraph}{Implementation}{16}{section*.9}
+\contentsline {paragraph}{Results}{18}{section*.10}
+\contentsline {paragraph}{Interpretation}{20}{section*.11}
+\contentsline {paragraph}{Conclusion}{20}{section*.12}
+\contentsline {subsection}{\numberline {3.2.2}1D vibrating string simulation}{20}{subsection.3.2.2}
+\contentsline {paragraph}{Model presentation}{21}{section*.13}
+\contentsline {paragraph}{Implementation}{21}{section*.14}
+\contentsline {paragraph}{Results}{21}{section*.15}
+\contentsline {paragraph}{Interpretation}{21}{section*.16}
+\contentsline {paragraph}{Conclusion}{21}{section*.17}
+\contentsline {subsection}{\numberline {3.2.3}1D traffic simulation}{24}{subsection.3.2.3}
+\contentsline {paragraph}{Model presentation}{24}{section*.18}
+\contentsline {paragraph}{Implementation}{24}{section*.19}
+\contentsline {paragraph}{Results}{25}{section*.20}
+\contentsline {paragraph}{Interpretation}{25}{section*.21}
+\contentsline {paragraph}{Conclusion}{25}{section*.22}
+\contentsline {subsection}{\numberline {3.2.4}Random walk in 2D simulation}{25}{subsection.3.2.4}
+\contentsline {paragraph}{Model presentation}{25}{section*.23}
+\contentsline {paragraph}{Implementation}{26}{section*.24}
+\contentsline {paragraph}{Results}{32}{section*.25}
+\contentsline {paragraph}{Interpretation}{33}{section*.26}
+\contentsline {paragraph}{Conclusion}{33}{section*.27}
+\contentsline {chapter}{\numberline {4}Control}{35}{chapter.4}
+\contentsline {section}{\numberline {4.1}Objectives}{35}{section.4.1}

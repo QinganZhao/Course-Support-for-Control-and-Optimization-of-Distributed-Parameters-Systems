@@ -1,0 +1,82 @@
+\thispagestyle{empty}
+%----------------------------------------------------------------------
+\chapter{Introduction}
+\label{introduction.chap}
+%----------------------------------------------------------------------
+
+\section{Objectives}
+%----------------------------------------------------------------------
+
+This practical course reader aims at giving good advice to students realizing a project. Starting with the theoretical knowledge contained in the reader of Prof. Alexandre Bayen, students have to realize a project based on a distributed parameter system that they should:
+\begin{enumerate}
+	\item describe
+	\item model
+	\item explain
+\end{enumerate}
+The first part is a descriptive (i.e. qualitative) description of the system to be studied, its interest and the goal of the study. The second part is an elaboration, under simplifications, of a quantitative model (meaning here some kind of Partial Differential Equation and some control or optimization). The third part is an analysis of this model, either by solving the equations, by simulation or by a combination of both, using the tools learned during the course. It should lead to a better understanding of how the system works and how it can be optimized or controlled to fulfill the goals set in the description.
+
+Therefore this practical course reader shows examples of modeling and various analysis methods that can support the creativity of the students realizing a project.
+
+\section{System description}\label{description.sec}
+%----------------------------------------------------------------------
+A system is, according to Cambridge dictionary ``a set of connected things or devices that operate together''. There is no recipe to describe a system. However, it is often useful, instead of having an \emph{analytical} description (i.e. tear the system into pieces), to have a \emph{synthetic} one (i.e. seeking for a global view). Without any generalization, again, one can look after the following 4 views of a system:
+\begin{enumerate}
+	\item objective
+	\item environment
+	\item actions
+	\item transformations
+\end{enumerate}
+One can very arguably contest these words, but remember they are only guidelines. In most systems, since they are man-made, there is a goal. This \emph{objective} is important to describe since it contains the meaning: what is it for? Note this is quite often the opposite of the analytical view: how does it work? However, in our case, this goal contains the information about the \emph{objective function} for optimization or for control. The \emph{environment} dictates what the system has to do: a system is never isolated and its goal is often closely related to its environment. At least, the \emph{actions} a system perform are partially internal and partially external, so that taking into account the environment allow understanding of disturbances but also the objective. Since a system is usually complex, it may evolve (i.e. experience \emph{transformations}) according to actions and in line with the objective. One can also think of transformation as internal states of a finite automaton.
+
+In any case, a description is intended at telling the whole story to other people and this is why it is highly recommended to use only words, no formula, but drawings can well replace a thousand words.
+
+\section{System modeling}
+%----------------------------------------------------------------------
+While a system description is intended to be purely qualitative, modeling aims at estimating some quantities. Very clearly, the choice of the quantities is decisive. Important quantities can be derived from the system description, such as the objective function (what to maximize or minimize?), the transformations (internal states) or environment variables.
+
+There are many ways to measure quantities, e.g. numbers of vehicles in a microscopic view may be equivalent to measuring densities of vehicle at a macroscopic scale. Unfortunately there is no algorithm to produce significant model and this is a knowledge that needs practice. However, in our present case, namely partial differential equations modeling, there is very often a kind of scaling that is necessary in order to produce continuous-space and continuous time variables. Since this reader aims at being practical, the reader is referred to Chapter~\ref{modeling.chap} for modeling examples.
+
+One can (too?) quickly summarize some usual quantities of interest:
+\begin{itemize}
+	\item macroscopic quantities (temperature, density, deformation...);
+	\item variables (state space, time...) and parameters including the control;
+	\item optimization criteria;
+	\item invariant quantities (mass, energy, momentum...) and constraints;
+	\item initial and boundary conditions.
+\end{itemize}
+
+
+\section{System explanation}
+%----------------------------------------------------------------------
+What is called here explanation has been also called ``solution'' during the course. It consists mainly in studying the model under various views and to produce new knowledge. This usually implies simulations, analytical analysis, optimization and visualization; all previous methods can be compared or combined in order to give more insight of the model.
+
+\subsection{Analysis}\label{analysis.sec}
+Analysis is important for the concepts it carries. We have learned a few methods to exactly solve or to transform the PDEs:
+\begin{enumerate}
+	\item Dimensional analysis allow to build interesting quantities that should remain constant;
+	\item Product-form solutions leads to decomposition of solutions (often in the type of Fourrier transform) with knowledge of the modes and their frequencies (spatial and temporal).
+	\item the method of characteristics is a powerful methods to build solutions, even discontinuous like shockwaves in LWR equations. The characteristic curves are interesting features.
+\end{enumerate}
+In the present course, students should perform some initial analytical analysis, even if it does not lead to a complete solution, in order to exhibits interesting quantities as mentioned above. These quantities should be used as guidelines as far as possible for further study.
+
+\subsection{Simulation}\label{simulation.sec}
+Simulation is interesting for all the data it brings. However there are many ways to simulate a system. At least we can mention:
+\begin{itemize}
+	\item Microscopic simulation --- often agent-based --- where a lot of microscopic entities evolves with their dynamics; This method is relevant when the PDE is a macroscopic view of the system, i.e. when it is derived from a scaling;
+	\item Finite differences schemes, that is often a direct implementation of the dynamics underlying the PDE (differences apply on a discretization of space and time);
+	\item Finite elements is usually associated to computation of eigenvalues and eigenvectors, i.e. to product-form solutions and the computation of modes; in this case, discretization is made through a projection of the functions onto a finite (functional) basis.
+\end{itemize}
+In this course, students have to produce simulations. The goal is to exploit the data to visualize the system evolution (see also Section~\ref{visualization.sec}) and get a better understanding. One of the main problem of simulation is to have a clear idea of the quantities to be displayed, be it statistics, metrics or functions. This is why a good prior analysis (see also Section~\ref{analysis.sec}) is a good idea. A must in simulation is to compare quantities computed from the output of the simulation with similar quantities computed from theoretical analysis: e.g. number of vehicles per km in micro-simulation with densities in LWR equations.
+
+
+\subsection{Optimization or control}\label{optimization.sec}
+The goal of this course is to learn how a system can be controlled or optimized. This requires to have a good description of the system in order to have clear ideas of what is to be optimized or controlled. Usually, the design of the control is free and this is where students can be creative.
+
+There is a very common distinction between 2 close concepts: planning and control. In most real systems, the planning phase is responsible for building suitable a path, according to the dynamics of the system and to the environment; then, a control loop ensures the systems follows this path by using actuators (the controls) and taking care of disturbances (in sensors and in actuators). Planning is open-loop, usually with a simple model (deterministic...) but with a complex cost function that expresses the desirable behavior. Control is closed-loop, designed to be robust, taking into account noises and disturbances, with a simple cost function: follow the plan.
+
+Techniques are very diverse and really depend on the system and the kind of control. Examples are given in Chapter~\ref{control.chap}.
+
+\subsection{Visualization}\label{visualization.sec}
+The visualization aspect of a study may be the most important yet the most challenging. Indeed, a drawing is extremely instructive, provided it is well explained. But the beauty can be misleading and the students have to take great care of the quantities they illustrate: What should be seen in the drawing? What does it tell us? Does it compare well with existing knowledge or not?
+
+Therefore it is advised to start quickly (very early with simulation data) to try to see something and to continuously improve the visualization aspect. It is important for explaining the results as well as for enhancing the students' own understanding (and debugging the codes, very often).

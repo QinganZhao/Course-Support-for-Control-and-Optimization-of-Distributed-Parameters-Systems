@@ -1,0 +1,85 @@
+\documentclass[a4paper,12pt,twoside]{book}
+
+%--------------------------------------------------------------------------
+%Packages
+%--------------------------------------------------------------------------
+\usepackage{amsfonts,amsmath,amssymb}
+%\usepackage{amsthm}
+\usepackage{xspace}
+\usepackage{fancyhdr}
+\usepackage{pythonhighlight}
+
+%\usepackage{these}
+\usepackage{textcomp} % for degrees : command \textcelsius also \textangle for angles
+
+%\usepackage{epsf}
+\usepackage[bookmarks=true,pdftex,colorlinks=true,urlcolor=blue,pdfstartview=FitH]{hyperref}
+  \pdfcompresslevel=9
+  \hypersetup{
+    pdftitle={Practical course reader on control of part},
+    pdfauthor={A. de La Fortelle},
+    pdfsubject={HDR},
+    pdfkeywords={ITS}
+  }
+\usepackage[pdftex]{graphicx}
+\DeclareGraphicsExtensions{.jpg,.mps,.pdf,.png} % Formats d'images
+\graphicspath{{Figures/}} % Chemin vers les figures
+
+
+
+%----------begin commands----------
+\newcommand{\ud}{\mathrm d} %COMMENT: for infinitesimal dx = \ud x and dy = \ud y TODO: DO YOURSELF all replacement
+\renewcommand\theequation{\arabic{equation}}
+\renewcommand{\figurename}{Fig.}
+\newcommand{\subgroup}[2]{\medskip \emph{Prepared by subgroup #1 (#2)}\medskip}
+%----------end commands----------
+
+
+%--------------------------------------------------------------------------
+%Document
+%--------------------------------------------------------------------------
+\begin{document}
+\frontmatter
+\input{couverture.tex}
+\newpage
+
+\pagestyle{fancy}
+\addtolength{\headsep}{\marginparsep}
+\addtolength{\headheight}{\baselineskip}
+%\addtolength{\headwidth}{\marginparsep}
+%\addtolength{\headwidth}{\marginparwidth}
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}} % remember chapter title
+%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\renewcommand{\chaptermark}[1]{\markboth{\thepart~~Ch.~\thechapter\ \ #1}{#1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+%\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{\small \sc \rightmark}
+\fancyhead[RE]{\small \sc \leftmark}
+\fancypagestyle{plain}{
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+}
+
+
+
+
+%\href{Table of contents}{}
+\tableofcontents
+\addcontentsline{toc}{chapter}{Table of Contents}
+
+%\listoffigures
+
+\mainmatter
+
+\include{introduction}
+\include{modeling}
+\include{simulation}
+\include{control}
+
+
+\end{document}
+
+
+

@@ -1,0 +1,50 @@
+\documentclass[a4paper,12pt,twoside]{article}
+
+%--------------------------------------------------------------------------
+%Packages
+%--------------------------------------------------------------------------
+\usepackage{amsfonts,amsmath,amssymb}
+%\usepackage{amsthm}
+\usepackage{xspace}
+\usepackage{fancyhdr}
+\usepackage{pythonhighlight}
+
+%\usepackage{these}
+\usepackage{textcomp} % for degrees : command \textcelsius also \textangle for angles
+
+%\usepackage{epsf}
+\usepackage[bookmarks=true,pdftex,colorlinks=true,urlcolor=blue,pdfstartview=FitH]{hyperref}
+  \pdfcompresslevel=9
+  \hypersetup{
+    pdftitle={Practical course reader on control of partial differential equations},
+    pdfauthor={A. de La Fortelle},
+    pdfsubject={control of PDE},
+    pdfkeywords={control, optimization, PDE, distributed systems}
+  }
+\usepackage[pdftex]{graphicx}
+\DeclareGraphicsExtensions{.jpg,.mps,.pdf,.png} % Formats d'images
+\graphicspath{{Figures/}} % Chemin vers les figures
+
+
+
+%----------begin commands----------
+\newcommand{\ud}{\mathrm d} %COMMENT: for infinitesimal dx = \ud x and dy = \ud y TODO: DO YOURSELF all replacement
+\renewcommand\theequation{\arabic{equation}}
+\renewcommand{\figurename}{Fig.}
+\newcommand{\subgroup}[2]{\medskip \emph{Prepared by subgroup #1 (#2)}\medskip}
+%----------end commands----------
+
+
+%--------------------------------------------------------------------------
+%Document
+%--------------------------------------------------------------------------
+\begin{document}
+% one can or not include the section and subsection this text belongs to
+\section{Derivation of partial differential equations}
+\subsection{2D heat diffusion}
+\input{modeling-2Dheat}
+
+\end{document}
+
+
+

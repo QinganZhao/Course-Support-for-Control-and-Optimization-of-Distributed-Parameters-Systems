@@ -1,0 +1,20 @@
+% ***********************************************************************************
+% Pure LaTeX part to be inserted in a document (be careful of depencies of packages & commands)
+% Prepared by XXX and YYY under the supervision of Arnaud de La Fortelle
+% Fall 2017
+% Derivation of the weak formulation of Dirichlet PDE; subsection of the modeling part
+% version: 2017-10-12
+% ***********************************************************************************
+
+\subgroup{3}{???}
+
+\paragraph{Objective}
+
+\paragraph{Demonstration}
+
+\[u=0\\
+\Delta u=\partial^2\frac{u}{x^2}+\partial^2\frac{u}{y^2}=0\\
+\iint_{D}(\frac{\partial u}{\partial x}-\frac{\partial u}{\partial y})dxdy=\oint_{L}Pdx+Qdy\\
+P=-\frac{\partial u}{\partial y},Q=\frac{\partial u}{\partial x}\\
+\oint_{L}Pdx+Qdy=\oint_{L}(-\frac{\partial u}{\partial y}dx+\frac{\partial u}{\partial x}dy)=\oint_{L}\nabla u(-dx,dy)
+\]

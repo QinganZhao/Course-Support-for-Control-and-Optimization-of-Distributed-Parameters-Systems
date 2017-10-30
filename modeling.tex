@@ -1,0 +1,29 @@
+\thispagestyle{empty}
+%----------------------------------------------------------------------
+\chapter{Modeling}
+\label{modeling.chap}
+%----------------------------------------------------------------------
+
+\section{Objectives}
+%----------------------------------------------------------------------
+
+The modeling of a system starts with a good description (see Section~\ref{description.sec}). Very often, the system can is made of numerous elements (e.g. cars, particles...) or can be decomposed into small chunks (string, heated body...). In this course we want to obtain PDEs: this means that the dynamics is local. Small elements influence only their neighbors through quantities that are very important: tension and curvature for a string, density and flow for traffic... In order to obtain PDEs, it is often necessary to assume such quantities are slowly varying and that one can \emph{scale} the system. Moreover, one should keep only a very limited number of quantities and simplifying assumptions are key to that objective (neglect gravity, torsion, viscosity...). Finally, an equation (even after scaling) is always obtain as limit of another equation: it is important to explain which principles (physical or other) lead to these equations, be it a conservation equation or dynamical equations.
+
+Now, a model is not complete with only a PDE: initial and boundary conditions must be explicit, the control parameter (or the space of choice) must be given as well as the optimization criteria. The following examples illustrate this method. 
+
+\section{Derivation of partial differential equations}
+%----------------------------------------------------------------------
+This section shows how one can describe some simple systems and derive from physical principles the PDEs modeling their behavior.
+
+\subsection{2D wave equation}
+\input{modeling-2Dwaves}
+
+\subsection{2D heat diffusion}
+\input{modeling-2Dheat}
+
+
+\section{Manipulation of partial differential equations}
+%----------------------------------------------------------------------
+
+\subsection{Weak formulation}
+\input{modeling-weakformulationDirichlet}
