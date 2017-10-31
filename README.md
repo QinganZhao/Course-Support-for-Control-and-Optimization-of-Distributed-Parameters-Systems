@@ -1,0 +1,2 @@
+# Course-Support-for-CE-291F-Control-and-Optimization-of-Distributed-Parameters-Systems
+This project helps the instructor of CE 291F at UC Berkeley with the material for lectures, using LaTeX (for the reader), LyX (for slides) and python (Anaconda with Numpy & Scipy + matplotlib for simulation and visualization). The goal is to release a good quality support (documentation + codes) publicly at the end.
