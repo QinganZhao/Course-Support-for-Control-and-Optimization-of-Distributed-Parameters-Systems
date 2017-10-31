@@ -1,0 +1,57 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+\title{The derivation of the weak formulation of the Dirichlet problem}
+\author{Xin Peng  Hongbei Chen}
+
+\begin{document}
+
+
+\maketitle
+
+\section{Weak formulation}
+
+Weak formulations are important tools for the analysis of mathematical equations that permit the transfer of concepts of linear algebra to solve problems in other fields such as partial differential equations. In a weak formulation, an equation is no longer required to hold absolutely and has instead weak solutions only with respect to certain "test vectors" or "test functions". This is equivalent to formulating the problem to require a solution in the sense of a distribution.
+
+\subsection{Example:Poisson's equation}
+
+Our aim is to solve this Poisson's equation
+$$-\Delta u= f\eqno(1.1)$$
+on a domain $\Omega \subset R^d$,$u=0$ on its boundary.\\
+Suppose $u$ is continuously differentiable in continental space $R^{2}$, test it with differentiable functions $v$ and integral, we get
+
+$$\int_\Omega \left ( \nabla^2u \right )vdx=\int_\Omega fvdx\eqno(1.2)$$
+We can make the left side of this equation more symmetric by integration by parts using Green's identity and assuming that $v=0$ on $\partial \Omega $
+$$-\int _\Omega \left ( \nabla^2u \right )vdx= -\int _{\partial\Omega }\left ( \nabla u \right )vds+\int _\Omega \nabla u \nabla vdx\eqno(1.3)$$
+
+$$-\int _\Omega \left ( \nabla^2u \right )vdx=\int _\Omega \nabla u \nabla vdx\eqno(1.4)$$
+The equation 1.4 is what is usually called the weak formulation of Poisson's equation. As we can see, weak formulations are partial differential equations testing with "test vectors" or "test functions" and then integral both side of equations. This transformation sacrifices the smoothness of solution. Since a large number of differential equations used to describe the phenomena in the real world do not have enough smooth solutions to solve such equations can only use weak formulation.
+
+\section{Dirichlet problem}
+
+A Dirichlet problem is the problem of finding a function which solves a specified partial differential equation in the interior of a given region that takes prescribed values on the boundary of the region. We take a PDE for example.
+
+\subsection{Hypothesis}
+
+We consider $f$ a continuous function on $\Omega$ of sumtable square and $u$ the solution of the following partial derivative equation on $\Omega$
+$$-\Delta u+k^{2} u=f\eqno(2.1)$$
+With the condition at the edge $u=0$ on $\partial\Omega$. This can also be rewritten $u\subset V _{0}$. This condition at the edge is called the Dirichlet condition. We prove that there exists a unique solution to this PDE problem using the Lax-Milgram theorem.
+
+\subsection{The derivation of the weak formulation}
+Let $u\subset V _{0}$ be arbitrary. Multiply the two parts of the previous equation by $v$ then sum to the domain $\Omega$, since $v$ and $f$ are both summable square on this domain. Equation:
+$$-\int _\Omega \Delta uvdw + k^2\int _\Omega uvdw = \int _\Omega vfdw\eqno(2.2)$$
+We can make the left side of this equation more symmetric by integration by parts using Green's identity:
+$$-\int _\Omega v\Delta udw=-\int _{\partial \Omega }v\nabla uds+\int _\Omega \left ( \nabla u \nabla v \right )dw\eqno(2.3)$$
+In this formulation, $v=0$ on $\partial \Omega $ $(v\subset V _{0})$.Thus $\int _{\partial \Omega }v\nabla uds=0$.
+$$\int _\Omega \left ( \nabla u \nabla v \right )dw+ k^2\int _\Omega uvdw = \int _\Omega vfdw\eqno(2.4)$$
+If u is twice differentiable, there is equivalence between this formulation and that of the initial problem given in the hypothesis section(Because we used to integral both side of equation). Then the solution of the weak formulation is the same as the initial solution. We can therefore solve the weak formulation instead of solving the initial problem.
+
+
+
+\
+\medskip
+
+\bibliographystyle{unsrt}%Used BibTeX style is unsrt
+\bibliography{sample}
+
+\end{document}
