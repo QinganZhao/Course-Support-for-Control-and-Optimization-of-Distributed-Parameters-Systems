@@ -1,14 +1,45 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Control}{35}{chapter.4}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Control and optimization}{45}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{control.chap}{{4}{35}{Control}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Objectives}{35}{section.4.1}}
+\newlabel{control.chap}{{4}{45}{Control and optimization}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Objectives}{45}{section.4.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Tools and examples}{46}{section.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Kalman filter}{46}{subsection.4.2.1}}
+\@writefile{toc}{\contentsline {paragraph}{Control model}{46}{section*.36}}
+\newlabel{kalman-dynamics.eq1}{{1}{46}{Control model}{equation.4.2.1}{}}
+\newlabel{kalman-dynamics.eq2}{{2}{46}{Control model}{equation.4.2.1}{}}
+\newlabel{kalman-cost.eq1}{{3}{46}{Control model}{equation.4.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces The free system dynamics: it shows instability and the system tends to diverge exponentially. The variance $\sigma _R^2$ (resp. $\sigma _Q^2$ ) is denoted by $R$ (resp. $Q$) in the system model.}}{47}{figure.4.1}}
+\newlabel{Kalman-free.fig}{{4.1}{47}{The free system dynamics: it shows instability and the system tends to diverge exponentially. The variance $\sigma _R^2$ (resp. $\sigma _Q^2$ ) is denoted by $R$ (resp. $Q$) in the system model}{figure.4.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{A naive control}{47}{section*.37}}
+\newlabel{kalman-costX.eq}{{4}{47}{A naive control}{equation.4.2.4}{}}
+\newlabel{kalman-costU.eq}{{5}{47}{A naive control}{equation.4.2.4}{}}
+\newlabel{kalman-Pcontrol.eq}{{6}{47}{A naive control}{equation.4.2.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces The same system as in Figure\nobreakspace  {}\ref  {Kalman-free.fig} with the proportional control as defined by Equation\nobreakspace  {}(\ref  {kalman-Pcontrol.eq}) with gain $K=1$. The system is indeed stable with empirical costs $J_1=0.06$ and $J_2=0.07$.}}{48}{figure.4.2}}
+\newlabel{Kalman-control-Gain1.fig}{{4.2}{48}{The same system as in Figure~\ref {Kalman-free.fig} with the proportional control as defined by Equation~(\ref {kalman-Pcontrol.eq}) with gain $K=1$. The system is indeed stable with empirical costs $J_1=0.06$ and $J_2=0.07$}{figure.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces The same system as in Figure\nobreakspace  {}\ref  {Kalman-control-Gain1.fig} with $K=100.1$ in order to fully compensate $A$. The system is very stable with empirical costs $J_1=0.011$ and $J_2=209$.}}{49}{figure.4.3}}
+\newlabel{Kalman-control-Gain100.fig}{{4.3}{49}{The same system as in Figure~\ref {Kalman-control-Gain1.fig} with $K=100.1$ in order to fully compensate $A$. The system is very stable with empirical costs $J_1=0.011$ and $J_2=209$}{figure.4.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{The Kalman filter}{49}{section*.38}}
+\newlabel{kalman-filter.eq1}{{7}{49}{The Kalman filter}{equation.4.2.7}{}}
+\newlabel{kalman-filter.eq2}{{8}{49}{The Kalman filter}{equation.4.2.7}{}}
+\newlabel{kalman-filter.eq3}{{9}{49}{The Kalman filter}{equation.4.2.7}{}}
+\newlabel{kalman-filter.eq4}{{10}{49}{The Kalman filter}{equation.4.2.7}{}}
+\newlabel{kalman-filter.eq5}{{11}{49}{The Kalman filter}{equation.4.2.7}{}}
+\newlabel{kalman-filter.eq6}{{12}{49}{The Kalman filter}{equation.4.2.7}{}}
+\newlabel{kalman-filter.eq7}{{13}{49}{The Kalman filter}{equation.4.2.7}{}}
+\newlabel{kalman-Pcontrol.eq2}{{14}{49}{The Kalman filter}{equation.4.2.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces The same system as in Figure\nobreakspace  {}\ref  {Kalman-control-Gain1.fig} with $K=10$. The empirical costs are $J_1=5.8\ 10^{-3}$ and $J_2=1.59$.}}{50}{figure.4.4}}
+\newlabel{Kalman-control-Gain10.fig}{{4.4}{50}{The same system as in Figure~\ref {Kalman-control-Gain1.fig} with $K=10$. The empirical costs are $J_1=5.8\ 10^{-3}$ and $J_2=1.59$}{figure.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}PID control}{50}{subsection.4.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Adjoint optimization}{50}{subsection.4.2.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces The system with a proportional control based on Kalman filter with $K=100.1$. The empirical costs are $J_1=3.77\ 10^{-3}$ and $J_2=10.2$.}}{51}{figure.4.5}}
+\newlabel{Kalman-TrueControl-Gain100.fig}{{4.5}{51}{The system with a proportional control based on Kalman filter with $K=100.1$. The empirical costs are $J_1=3.77\ 10^{-3}$ and $J_2=10.2$}{figure.4.5}{}}
 \@setckpt{control}{
-\setcounter{page}{36}
-\setcounter{equation}{0}
-\setcounter{enumi}{3}
+\setcounter{page}{52}
+\setcounter{equation}{14}
+\setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
@@ -16,18 +47,18 @@
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{4}
-\setcounter{section}{1}
-\setcounter{subsection}{0}
+\setcounter{section}{2}
+\setcounter{subsection}{3}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{0}
+\setcounter{figure}{5}
 \setcounter{table}{0}
 \setcounter{parentequation}{0}
-\setcounter{lstnumber}{121}
-\setcounter{Item}{10}
+\setcounter{lstnumber}{111}
+\setcounter{Item}{12}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{26}
+\setcounter{bookmark@seq@number}{32}
 \setcounter{lstlisting}{0}
-\setcounter{section@level}{1}
+\setcounter{section@level}{2}
 }

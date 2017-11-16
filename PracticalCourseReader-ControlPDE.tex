@@ -8,11 +8,10 @@
 \usepackage{xspace}
 \usepackage{fancyhdr}
 \usepackage{pythonhighlight}
-
-%\usepackage{these}
+\usepackage{cancel}
+\usepackage{tikz}
 \usepackage{textcomp} % for degrees : command \textcelsius also \textangle for angles
 
-%\usepackage{epsf}
 \usepackage[bookmarks=true,pdftex,colorlinks=true,urlcolor=blue,pdfstartview=FitH]{hyperref}
   \pdfcompresslevel=9
   \hypersetup{
@@ -21,8 +20,9 @@
     pdfsubject={HDR},
     pdfkeywords={ITS}
   }
-\usepackage[pdftex]{graphicx}
-\DeclareGraphicsExtensions{.jpg,.mps,.pdf,.png} % Formats d'images
+% graphicx is imported through tikz
+%\usepackage[pdftex]{graphicx}
+%\DeclareGraphicsExtensions{.jpg,.mps,.pdf,.png} % Formats d'images
 \graphicspath{{Figures/}} % Chemin vers les figures
 
 

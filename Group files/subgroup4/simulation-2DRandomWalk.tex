@@ -50,9 +50,7 @@ Particles are simulated one at a time. The simulation runs until the time horizo
 
 Information about where particles hit the wall is included in the same arrays. This data ``circumvents'' the $n \times n$ data about the particle distribution within the grid. As a result, when we plot the full array we can see the distribution of particles in the grid at their respective location, and the distribution of particles at the wall directly ``behind'' the wall.\newline
 
-\begin{python}
-# This file will model/simulate the random motion
-
+\begin{lstlisting}[language = python, caption = 2D Ramdom Walk Simulation]
 import numpy as np
 import matplotlib.pyplot as plt
 from random import *
@@ -60,49 +58,43 @@ import pylab
 
 ############## START INPUT #################
 
-GridSizeSquare = 20 # n, will create an nxn grid
-#define starting position as ratio or grid size
-Pos_init = np.ceil(np.array([0.4,0.4])*GridSizeSquare)
-#T is the total amount of time steps, scale with square of grid size. 0.3 is nice
-T = 0.3*np.power(GridSizeSquare, 2)
-n_particles = 10000 # #particles. 10000+ recommended
-# define the # of subplots for intermediate time snap shots
+GridSize = 20 # will create an 20x20 square grid
+Pos_init = np.ceil(np.array([0.4,0.4])*GridSize)  # start position
+T = 0.3*np.power(GridSizeSquare, 2)  # total # of time steps
+n_particles = 10000 # number of particles, 10000+ recommended
+# specify subplots for intermediate time snap shots
 subplot_row = 2             
 subplot_column = 2
-#defines the drift probabilities: ([up,right,down,left,0]) 
+#define the probabilities of motion: ([up,right,down,left,0]) 
 motion_prob = np.array([0.2,0.2,0.2,0.2,0.2])
 
 ############## END INPUT #################
 
-#only look at square grids, but this could be changed:
 x_grid = GridSizeSquare
 y_grid = GridSizeSquare
 n_subplot = subplot_row*subplot_column
+# calculate time step for snapshots of process
 Plot_interval = np.floor((T-1)/(n_subplot-1))
-#This determines when you take snapshots of the process, every "Plot_interval" time steps
-
-# now define the probabilities of the random walk
-# notation of motion ([up,right,down,left,no motion])
-# I normalized in case probabilities do not add up to 1...
+# Normalize probabilities in case they don't add up to 1
 motion_prob = motion_prob/np.sum(motion_prob)
 # define the change in coordinates of every motion:
 motion_xy = np.array([[0,1],[1,0],[0,-1],[-1,0],[0,0],])
-motion_prob_percentile = np.cumsum(motion_prob)
+motion_prob_sum = np.cumsum(motion_prob)
 # this is used later to draw from with randomizer
 
-# make an empty data grid from where you are going to count the amount occurrences and hits against the wall
-Data = np.zeros((x_grid+2,y_grid+2)) # "+2" for wall data
+# make an empty data grid to sum the particle positions
+Data = np.zeros((x_grid+2,y_grid+2))  # +2 for wall data
+# Some resizing here and later are for ploting purposes
 Data_resized = np.zeros((Data.shape[0]+1,Data.shape[1]+1))
-# This for plotting purposes, I need to add an extra row an column for some reason
-# Now create a new empty data set for the intermediate plots:
-Data_TimeVarying = np.zeros((n_subplot,Data_resized.shape[0],Data_resized.shape[1]))
+# Create a new empty data set for the intermediate plots:
+Data_Snap=np.zeros((n_subplot,Data_resized.shape[0],Data_resized.shape[1]))
 
 # construct some arrays for plotting later on:
 xx, yy = pylab.meshgrid(
     pylab.linspace(-1,x_grid+1,x_grid+3),
     pylab.linspace(-1,y_grid+1,y_grid+3))
 
-# Here, start loop over all the particles after each other:
+# start loop over all the particles
 for i in range(1, n_particles+1):
     # Initialize simulation
     t = 0
@@ -110,68 +102,66 @@ for i in range(1, n_particles+1):
     Pos = Pos_init
     Subplot = 1
     
-    # start simulation
+    # Simulation Process
     while t < T and not HitWall:
-                
-         # Now continue with the motion simulation
         MotionRandom = random()
-        IndexMotion = np.argmax(motion_prob_percentile>MotionRandom)
-        Pos = Pos + motion_xy[IndexMotion,:] #this works
+        IndexMotion = np.argmax(motion_prob_sum>MotionRandom)
+        Pos = Pos + motion_xy[IndexMotion,:] 
         
         # Now check for hitting the wall
-        if Pos[0] == 0 or Pos[1] == 0 or Pos[0] == x_grid+1 or Pos[1] == y_grid+1:
+        if Pos[0] == 0|x_grid+1 or Pos[1] == 0|y_grid+1:
             if Subplot <= n_subplot:             
-                Data_TimeVarying[Subplot-1,Pos[0],Pos[1]] = Data_TimeVarying[Subplot-1,Pos[0],Pos[1]]+1
+                Data_Snap[Subplot-1,Pos[0],Pos[1]] = \
+                Data_Snap[Subplot-1,Pos[0],Pos[1]]+1
             HitWall = True
 
-        # Now record the position for time dependent plotting purposes
-        if t % Plot_interval == 0 and Subplot <= n_subplot and not(HitWall):   #so create a subplot every Plot_interval time steps
-            Data_TimeVarying[Subplot-1,Pos[0],Pos[1]] = Data_TimeVarying[Subplot-1,Pos[0],Pos[1]]+1
+        # Record the position for each time snap
+        if t % Plot_interval==0 and Subplot <= n_subplot and not(HitWall):        
+            Data_Snap[Subplot-1,Pos[0],Pos[1]] =\
+            Data_Snap[Subplot-1,Pos[0],Pos[1]]+1
             Subplot = Subplot+1        
         
         t = t+1
     
-    
-    #This was basically the whole simulation, now save the results
+    #Save the final results
     Data[Pos[0],Pos[1]] = Data[Pos[0],Pos[1]] + 1
-    # I need to give resize Data with an extra row and column, since pcolor doesn't plot the full range of the matrix...
     Data_resized[:-1,:-1] = Data       
 
+# Add the particles that hit the wall in earlier time steps
+# to the later plots
+Data_Snap_New = np.cumsum(Data_Snap,axis=0)
+Data_Snap_New[:,1:x_grid+1,1:y_grid+1] = Data_Snap[:,1:x_grid+1,1:y_grid+1]
 
-# Now I need to do some post-processing of the intermediate measurements.
-# I need to add the particles that hit the wall in earlier time steps to the 
-# later plots, so the total amount of particles is always n  
-Data_TimeVarying_Corrected = np.cumsum(Data_TimeVarying,axis=0)
-Data_TimeVarying_Corrected[:,1:x_grid+1,1:y_grid+1] = Data_TimeVarying[:,1:x_grid+1,1:y_grid+1]
-
-
-# This loop creates subplots at several time instances
+# Visualize the outcomes at each snap of process
 plt.figure()
 for j in range(1, n_subplot+1):
-    #Now visualize the outcomes
     pylab.subplot(subplot_row, subplot_column, j)
-    pylab.pcolor(xx,yy,np.transpose(Data_TimeVarying_Corrected[j-1,:,:]))
-    TitleString = 'Distribution at t = ' + str((j-1)*Plot_interval+1)
-    pylab.title(TitleString)
-    # and a color bar to show the correspondence between function value and color
+    pylab.pcolor(xx,yy,np.transpose(Data_Snap_New[j-1,:,:]))
+    Str = 'Distribution at t = ' + str((j-1)*Plot_interval+1)
+    pylab.title(Str)
+    # add a color bar
     pylab.colorbar()
     pylab.hold(True)
-    pylab.plot([0, x_grid],[0, 0], 'r',[0, x_grid],[y_grid, y_grid], 'r',[0, 0],[0, y_grid], 'r',[x_grid, x_grid],[0, y_grid], 'r')
+    pylab.plot([0, x_grid],[0, 0], 'r',
+               [0, x_grid],[y_grid, y_grid], 'r',[0, 0],[0, y_grid], 'r',
+               [x_grid, x_grid],[0, y_grid], 'r')
     pylab.plot(Pos_init[0]-0.5,Pos_init[1]-0.5,'ro')
 
 pylab.show()
 
-# This plot shows the final distribution, including distribution along the walls
+# Plot the final distribution
 plt.figure()
 pylab.pcolor(xx,yy,np.transpose(Data_resized))
 pylab.title('Final distribution at t = %d, including hitting walls' %T)
-# and a color bar to show the correspondence between function value and color
+# add a color bar 
 pylab.colorbar()
 pylab.hold(True)
-pylab.plot([0, x_grid],[0, 0], 'r',[0, x_grid],[y_grid, y_grid], 'r',[0, 0],[0, y_grid], 'r',[x_grid, x_grid],[0, y_grid], 'r')
+pylab.plot([0, x_grid],[0, 0], 'r',
+           [0, x_grid],[y_grid, y_grid], 'r',[0, 0],[0, y_grid], 'r',
+           [x_grid, x_grid],[0, y_grid], 'r')
 pylab.plot(Pos_init[0]-0.5,Pos_init[1]-0.5,'ro')
 pylab.show
-\end{python}
+\end{lstlisting}
 
 
 

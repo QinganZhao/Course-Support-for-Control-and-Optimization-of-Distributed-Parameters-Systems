@@ -1,9 +1,25 @@
 \thispagestyle{empty}
 %----------------------------------------------------------------------
-\chapter{Control}
+\chapter{Control and optimization}
 \label{control.chap}
 %----------------------------------------------------------------------
 
 \section{Objectives}
 %----------------------------------------------------------------------
+Once a system has been enough understood, there is still to do the main work: enhance it. This means most of the time optimization, and control can be seen as an online optimization (i. e. continuously making the system better). There are several control techniques as there are many optimization techniques. Since this reader aims at keeping things practical, we will not develop all possible ideas here. Instead we insist onto 2 main ideas:
+\begin{enumerate}
+	\item explicit a criteria to be optimized: in principle, this is rooted in the system description and what we want to do with the system. There are many ways to enhance a system, and very often the models are too complicated to have an explicit optimum (whenever they have one). But without criteria, there is even no way to know what is better (or worse).
+	\item simplify the model so that the optimization (or control) problem can be solved by simple tools. As a rule, it is often better to get a simple but efficient control rather than to try to compute the optimal one. This rules also holds for optimization: the best is the enemy of the good; well enough is enough in lots of practical systems.
+\end{enumerate}
+
+Therefore some tools for PDE are applied in the next sections as well as simple tools that can be applied by smartly simplifying the problem.
+
+\section{Tools and examples}
+
+\subsection{Kalman filter}
+\input{control-kalman}
+
+\subsection{PID control}
+
+\subsection{Adjoint optimization}
 

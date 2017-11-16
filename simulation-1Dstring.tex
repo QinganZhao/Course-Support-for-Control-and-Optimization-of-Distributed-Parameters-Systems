@@ -1,164 +1,150 @@
 % ***********************************************************************************
-% Pure LaTeX part to be inserted in a document (be careful of depencies of packages & commands)
+% Pure LaTeX part to be inserted in a document (be careful of depencies of packages & commands
 % Prepared by XXX and YYY under the supervision of Arnaud de La Fortelle
 % Fall 2017
-% 1D string waves subsection of the simulation part
+% 2D wave propagation subsection of the modeling part
 % ***********************************************************************************
 
-\subgroup{2}{Qingan Zhao and Ruitong Zhu}
+\subgroup{2}{Ruitong Zhu and Qingan Zhao}
 
 \paragraph{Model presentation}
-What is the model we want to simulate? What do we want to observe? Which is the state space and the dynamics?
+This part is to simulate the vibrating string (i.e., 1D wave equation) and present its displacement with a time-varying image. The string held stationary at both ends and free to vibrate transversely subject only to the restoring forces due to tension in the string. $Figure 1$ shows coordinates and definies symbols for the transverse vibrating string. 
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=10cm]{string.jpg}       
+	\caption{Vibrating String}
+\end{figure}
+
+The partial differential equation (PDE) of this problem is given as follow:
+
+\begin{equation}
+	\frac{\partial^2 h}{\partial t^2}=a^2\left(\frac{\partial^2 h}{\partial x^2}\right)
+\end{equation}
+
+where $h$ is the wave function $h(x,t)$, representing the displacement of the string at position $x$ and time $t$; $a$ is the wave speed which equals to $\sqrt{E/\rho}$.
 
 \paragraph{Implementation}
-Explain the structure of the code. Do not put necessarily all the code (not more than 100 lines) since some routines (functions) can hide efficiently some unnecessary complexity. Provide a code that run (and explicit librairies and dependencies). Ensure your file name is aligned with this part.
 
- \paragraph{Results}
- Explain the quantities you are studying (i.e. metrics and statistics). Provide good visualization.
- 
-\paragraph{Interpretation}
-Relate these quantities to the model and to theoretical knowledge of the course.
-
- \paragraph{Conclusion}
- What have we learned? Is everything aligned (theory and practice)? What was difficult? Provide perspectives.
- 
-This code aims to simulate the vibration string (i.e., wave equation) in one dimension. The partial differential equation (PDE) of this problem is given as follow:
+The simluation is based on Finite Difference Method (FDM). Using second-order central difference at time $t_n$ and position $x_i$, we can get the recurrence equation as follow:
 
 \begin{equation}
-\frac{\partial^2 h}{\partial t^2}=a^2\left(\frac{\partial^2 h}{\partial x^2}\right)
+\frac{u_{i}^{N+1}-2u_{i}^{N}+u_{i}^{N-1}}{\Delta t^2} = a^2\frac{u_{i+1}^{N}-2u_{i}^{N}+u_{i-1}^{N}}{\Delta x^2}
 \end{equation}
 
-where $h$ is the wave function of each point so that the displacement of the string at position $x$ and time $t$ are described as $h(x,t)$; $a$ is the wave speed which equals to $(E/\rho)^{0.5}$.
-
-The simluation is based on finite differences method (FDM). Assume the wave speed $a$ equals to $1$; the length of the string (constrained at both ends) is $2$; the maxium time for this simulation is $4$; stepsize $dx$ and $dt$ are both equal to $0.01$. The initial condition of shape and speed are described as follows:
-
+Assume the wave speed $a = 1$; the length of the string $L$ is $2$; the maxium time for this simulation is $4$; stepsize $\Delta x$ and $\Delta t$ are both equal to $0.01$. The initial condition and the boundary condition are described as follows:
 \begin{eqnarray}
 h(x,0)&=&sin(\pi x)\\
-\frac{\partial h}{\partial t}\bigg |_{(x,0)}&=&0
+\frac{\partial h}{\partial t}\bigg |_{(x,0)}&=&0\\
+h(0,t)&=&h(2,t)=0
 \end{eqnarray}
 
-The boundary conditions are described as follows:
-\begin{equation}
-h(0,t)=h(2,t)=0
-\end{equation}
+Here we offer the implementation in Python:
 
-Here is the code:
 \begin{python}
-	import numpy as np
-	import math
-	from mpl_toolkits.mplot3d import Axes3D
-	from matplotlib import pyplot as plt
-	from matplotlib import rc
-	plt.rc('text', usetex=True)
-	plt.rc('font', family='serif')
-
 	## parameter
 	a = 1  ## a coefficient of stiffness
 	L = 2  ## The string is constrained at x=0 and x=L.
 	T = 4  ## maxium time for this simulation.
 	dx = 0.01  ## time step
 	dt = 0.01  ## distance step
-	N = int(L / dx);
-	M = int(T / dt);
-	r = (a * dt / dx) ** 2  ## a parameter
-\end{python}
-	
-\begin{python}
+	N = int(L/dx);
+	M = int(T/dt);
+	r = (a*dt/dx)**2  ## a parameter
+
 	## initial shape of the string
 	def initial(x):
-	tmp = math.sin(math.pi * x)
+	tmp = math.sin(math.pi*x)
 	return tmp
 	
 	## initial speed of the string
-	def diff(x):
-	tmp = 0 * x
+	def speed(x):
+	tmp = 0
 	return tmp
 	
 	## Define an array and a blank matrix for later use.
 	x = [0]
-	h = np.zeros((M + 1, N + 1))
+	h = np.zeros((M+1, N+1))
 	
-	## t=0
+	## t=0, initial condition
 	for i in range(N):
 	x.append(x[i] + dx)  ## x axis
-	h[0, i + 1] = initial(x[i + 1])  ## displacement of the string
+	h[0,i+1] = initial(x[i+1])  ## displacement of the string
 	
-	## t=dt
-	for i in range(N - 1):
-	h[1, i + 1] = h[0, i + 1] + r * (h[0, i] + h[0, i + 2] - 2 * h[0, i + 1]) / 2 + dx * diff(x[i + 1])
+	## t=dt, the first itertaion
+	for i in range(N-1):
+	h[1,i+1] = h[0,i+1] + r* (h[0,i] + h[0,i+2] - 2*h[0,i+1])/2 + dx*speed(x[i+1])
 	## displacement of the string
 	
-	## t=n*dt n>1
+	## t=n*dt where n>1
 	for j in range(1, M):
-	for i in range(N - 1):
-	h[j + 1, i + 1] = (h[j, i + 2] + h[j, i] - 2 * h[j, i + 1]) * r - h[j - 1, i + 1] + 2 * h[j, i + 1]
+	for i in range(N-1):
+	h[j+1,i+1] = (h[j,i+2]+h[j,i]-2*h[j,i+1])*r-h[j-1,i+1]+2*h[j,i+1]
 	## displacement of the string
 	
 	t = [0]
 	for j in range(M):
 	t.append(t[j] + dt)  ## t axis
-\end{python}
-
-\bigskip Plot the 3D graph $(x,t,h)$:
-
-\begin{python}
+	
 	## Plot the 3D figure.
 	fig = plt.figure()
 	ax = Axes3D(fig)
 	X, T= np.meshgrid(x,t)
 	ax.plot_surface(X, T, h, cmap='rainbow')
-	plt.title(u'Vibrating String',fontsize=14)
 	ax.set_xlabel('X')
 	ax.set_ylabel('T')
 	ax.set_zlabel('h')
 	plt.show()
-\end{python}
-
-$\\\\\\$ %make sure the following figure is ahead of the texts
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=10cm]{3D.pdf}       
-\caption{3D graph of the simulation}
-\end{figure}
-
-Plot the shape of the string when $t=\{0, 0.5, 1, 1.5, 2\}$:
-\begin{python}
-	for i in range(5):
-	plt.scatter(x,h[i*50,],label="t="+str(i*0.5))
-	plt.title(u'Shape of the String',fontsize=14)
+	
+	## Plot the shape of string at different time
+	for i in range(4):
 	plt.xlabel(u'x',fontsize=14)
 	plt.ylabel(u'h',fontsize=14)
-	plt.legend(loc='upper left')
 	plt.show()
 \end{python}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=10cm]{t=0.pdf}       
-	\caption{Shape of the string when t=0}
-\end{figure}
+\paragraph{Results}
+
+The dynamic change of the string is shown in $Figure 2$, ranging from $0\sim 4$.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=10cm]{t=0_5.pdf}       
-	\caption{Shape of the string when t=0.5}
+	\includegraphics[width=10cm]{string3d.png}       
+	\caption{Time-varying Image of the string}
 \end{figure}
 
-\begin{figure}[htb]
+More specifically, the shapes of the string at different times are shown below:
+
+\begin{figure}[ht]
 	\centering
-	\includegraphics[width=10cm]{t=1.pdf}       
-	\caption{Shape of the string when t=1}
+	\begin{minipage}{8cm}
+		\includegraphics[width=7cm]{string0.png}   
+		\caption*{t=0}
+		\end{minipage}    
+	\begin{minipage}{8cm}
+		\includegraphics[width=7cm]{string0_5.png}   
+		\caption*{t=0.5}
+	\end{minipage}  
+
+    \begin{minipage}{8cm}
+    	\includegraphics[width=7cm]{string1.png}   
+    	\caption*{t=1}
+        \end{minipage}  
+    \begin{minipage}{8cm}
+    	\includegraphics[width=7cm]{string1_5.png}  
+    	\caption*{t=1.5} 
+    \end{minipage}  
+	\caption{Shape of the string at time t}
 \end{figure}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=10cm]{t=1_5.pdf}       
-	\caption{Shape of the string when t=1.5}
-\end{figure}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=10cm]{t=2.pdf}       
-	\caption{Shape of the string when t=2}
-\end{figure}
+
+\paragraph{Interpretation}
+
+The results are consistent with our expectation. The shape of the string depends on the initial and boundary conditions. In this case, the string is in the shape of a sine wave that changes periodically. 
+
+The initial and boundary conditions can be changed easily at the code by modifying the function $initial()$ and $speed()$. Readers can plot more complicated image with different initial displacement and speed function.
+
+\paragraph{Conclusion}
+Finite Difference Method is a practical method to obtain the numerical solution of a Partial Differential Equation. We can learn that it is applicable for one dimentional problems like 1D wave equation and 1D heat equation. It's not difficult to understand but there are some places worth special attention while writing the code. For example, the first iteration needs to be distinguished from other iterations since $t_{N-1}$ is not defined. 
+

@@ -5,7 +5,7 @@
 % 2D wave propagation subsection of the modeling part
 % ***********************************************************************************
 
-\subgroup{1}{Bradley Cage and Lin Yang
+\subgroup{1}{Bradley Cage and Lin Yang}
 
 \paragraph{Description}
 \begin{figure}[htb]
@@ -61,8 +61,8 @@ $$ \sin(\beta) \approx \tan(\beta) = \frac{\partial u}{\partial y} = u_y$$
 
 \noindent to get our equations into the form
 
-$$F_x = F_t\u dy\Big[u_x(x+\ud x,y,t) - u_x(x,y,t)\Big]$$
-$$F_y = F_t\u dx\Big[u_y(x,y+\ud y,t) - u_y(x,y,t)\Big]$$
+$$F_x = F_t\ud y\Big[u_x(x+\ud x,y,t) - u_x(x,y,t)\Big]$$
+$$F_y = F_t\ud x\Big[u_y(x,y+\ud y,t) - u_y(x,y,t)\Big]$$
 
 \noindent From there we can sum these forces and plug them back in to equation \ref{no_balance}
 
@@ -100,6 +100,8 @@ a^2 \frac{\partial^2u}{\partial t^2} = \nabla^2 u
 \noindent Initial condition:
 \begin{itemize}
 	\item When t=0, the vertical position all over the membrane is 0, i.e., $u(x,y,0)=0$.
+    \item When t=0, the membrane is being at rest, i.e., \begin{equation} \frac{\partial u(x,y,0)}{\partial t}=0
+\end{equation}
 \end{itemize}
 \begin{figure}[htb]
 	\centering
@@ -107,9 +109,12 @@ a^2 \frac{\partial^2u}{\partial t^2} = \nabla^2 u
 	\caption{The membrane system's boundaries}
 	\label{2D_waves_boundary_conditions.fig}
 \end{figure}
-Boundary condition:
+\noindent The membrane's area is ab(with the edge length being a,b respectively).
+
+\noindent Boundary condition: 
 \begin{itemize}
 	\item The vertical positions of the 4 edges of the membrane remain 0 all the time, i.e., $u(x,0,t)=0$, $u(0,y,t)=0$, $u(a,y,t)=0$, $u(x,b,t)=0$.
+	\item Another type of boundary condition is the reflecting or no-flux boundary condition.
 \end{itemize}
 \noindent Some hints for the control and the cost function of the 2D wave equation:
 \begin{itemize}

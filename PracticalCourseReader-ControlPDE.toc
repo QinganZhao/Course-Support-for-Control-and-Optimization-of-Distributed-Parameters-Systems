@@ -14,39 +14,56 @@
 \contentsline {subsection}{\numberline {2.2.1}2D wave equation}{8}{subsection.2.2.1}
 \contentsline {paragraph}{Description}{8}{figure.2.1}
 \contentsline {paragraph}{Model}{8}{section*.3}
-\contentsline {subsection}{\numberline {2.2.2}2D heat diffusion}{11}{subsection.2.2.2}
-\contentsline {paragraph}{Description}{11}{section*.4}
-\contentsline {paragraph}{Model}{11}{section*.5}
-\contentsline {section}{\numberline {2.3}Manipulation of partial differential equations}{14}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Weak formulation}{14}{subsection.2.3.1}
-\contentsline {paragraph}{Objective}{14}{section*.6}
-\contentsline {paragraph}{Demonstration}{14}{section*.7}
-\contentsline {chapter}{\numberline {3}Simulation}{15}{chapter.3}
-\contentsline {section}{\numberline {3.1}Objectives}{15}{section.3.1}
-\contentsline {section}{\numberline {3.2}Simulation examples}{15}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Forward Euler simulation of the 1D heat equation}{15}{subsection.3.2.1}
-\contentsline {paragraph}{Model presentation}{16}{figure.3.1}
-\contentsline {paragraph}{Implementation}{16}{section*.9}
-\contentsline {paragraph}{Results}{18}{section*.10}
-\contentsline {paragraph}{Interpretation}{20}{section*.11}
-\contentsline {paragraph}{Conclusion}{20}{section*.12}
-\contentsline {subsection}{\numberline {3.2.2}1D vibrating string simulation}{20}{subsection.3.2.2}
-\contentsline {paragraph}{Model presentation}{21}{section*.13}
-\contentsline {paragraph}{Implementation}{21}{section*.14}
-\contentsline {paragraph}{Results}{21}{section*.15}
-\contentsline {paragraph}{Interpretation}{21}{section*.16}
-\contentsline {paragraph}{Conclusion}{21}{section*.17}
-\contentsline {subsection}{\numberline {3.2.3}1D traffic simulation}{24}{subsection.3.2.3}
-\contentsline {paragraph}{Model presentation}{24}{section*.18}
-\contentsline {paragraph}{Implementation}{24}{section*.19}
-\contentsline {paragraph}{Results}{25}{section*.20}
-\contentsline {paragraph}{Interpretation}{25}{section*.21}
-\contentsline {paragraph}{Conclusion}{25}{section*.22}
-\contentsline {subsection}{\numberline {3.2.4}Random walk in 2D simulation}{25}{subsection.3.2.4}
-\contentsline {paragraph}{Model presentation}{25}{section*.23}
-\contentsline {paragraph}{Implementation}{26}{section*.24}
-\contentsline {paragraph}{Results}{32}{section*.25}
-\contentsline {paragraph}{Interpretation}{33}{section*.26}
-\contentsline {paragraph}{Conclusion}{33}{section*.27}
-\contentsline {chapter}{\numberline {4}Control}{35}{chapter.4}
-\contentsline {section}{\numberline {4.1}Objectives}{35}{section.4.1}
+\contentsline {paragraph}{Initial and boundary conditions}{11}{section*.4}
+\contentsline {subsection}{\numberline {2.2.2}2D heat diffusion}{12}{subsection.2.2.2}
+\contentsline {paragraph}{Description}{12}{section*.5}
+\contentsline {paragraph}{Model}{12}{section*.6}
+\contentsline {subsection}{\numberline {2.2.3}2D random walk}{15}{subsection.2.2.3}
+\contentsline {paragraph}{Description}{15}{section*.7}
+\contentsline {paragraph}{Model}{15}{section*.8}
+\contentsline {subsection}{\numberline {2.2.4}Heavy chain}{18}{subsection.2.2.4}
+\contentsline {paragraph}{Description}{18}{section*.9}
+\contentsline {paragraph}{Model}{18}{section*.10}
+\contentsline {paragraph}{Solving the PDE}{20}{section*.11}
+\contentsline {paragraph}{Step 1: substitution}{20}{section*.12}
+\contentsline {paragraph}{Step 2: transform to Laplace domain}{21}{section*.13}
+\contentsline {section}{\numberline {2.3}Manipulation of partial differential equations}{21}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Weak formulation}{21}{subsection.2.3.1}
+\contentsline {paragraph}{Objective}{22}{section*.14}
+\contentsline {paragraph}{Demonstration}{22}{section*.15}
+\contentsline {chapter}{\numberline {3}Simulation}{25}{chapter.3}
+\contentsline {section}{\numberline {3.1}Objectives}{25}{section.3.1}
+\contentsline {section}{\numberline {3.2}Simulation examples}{25}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Forward Euler simulation of the 1D heat equation}{25}{subsection.3.2.1}
+\contentsline {paragraph}{Model presentation}{26}{figure.3.1}
+\contentsline {paragraph}{Implementation}{26}{section*.17}
+\contentsline {paragraph}{Results}{28}{section*.18}
+\contentsline {paragraph}{Interpretation}{30}{section*.19}
+\contentsline {paragraph}{Conclusion}{30}{section*.20}
+\contentsline {subsection}{\numberline {3.2.2}1D vibrating string simulation}{30}{subsection.3.2.2}
+\contentsline {paragraph}{Model presentation}{31}{section*.21}
+\contentsline {paragraph}{Implementation}{31}{section*.22}
+\contentsline {paragraph}{Results}{33}{section*.23}
+\contentsline {paragraph}{Interpretation}{33}{section*.24}
+\contentsline {paragraph}{Conclusion}{34}{section*.25}
+\contentsline {subsection}{\numberline {3.2.3}1D traffic simulation}{34}{subsection.3.2.3}
+\contentsline {paragraph}{Model presentation}{34}{section*.26}
+\contentsline {paragraph}{Implementation}{34}{section*.27}
+\contentsline {paragraph}{Results}{34}{section*.28}
+\contentsline {paragraph}{Interpretation}{34}{section*.29}
+\contentsline {paragraph}{Conclusion}{34}{section*.30}
+\contentsline {subsection}{\numberline {3.2.4}Random walk in 2D simulation}{34}{subsection.3.2.4}
+\contentsline {paragraph}{Model presentation}{34}{section*.31}
+\contentsline {paragraph}{Implementation}{35}{section*.32}
+\contentsline {paragraph}{Results}{38}{section*.33}
+\contentsline {paragraph}{Interpretation}{39}{section*.34}
+\contentsline {paragraph}{Conclusion}{39}{section*.35}
+\contentsline {chapter}{\numberline {4}Control and optimization}{45}{chapter.4}
+\contentsline {section}{\numberline {4.1}Objectives}{45}{section.4.1}
+\contentsline {section}{\numberline {4.2}Tools and examples}{46}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Kalman filter}{46}{subsection.4.2.1}
+\contentsline {paragraph}{Control model}{46}{section*.36}
+\contentsline {paragraph}{A naive control}{47}{section*.37}
+\contentsline {paragraph}{The Kalman filter}{49}{section*.38}
+\contentsline {subsection}{\numberline {4.2.2}PID control}{50}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Adjoint optimization}{50}{subsection.4.2.3}
