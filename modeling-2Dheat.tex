@@ -77,12 +77,26 @@ Denote $k/c\rho$ by $a^2$, and the two-dimensional heat equation can be drawn:
 \frac{\partial T}{\partial t}=a^2\left(\frac{\partial ^2 T}{\partial x^2}+\frac{\partial ^2 T}{\partial y^2}\right)
 \end{equation}
 
-To solve the PDE, we also need to specify initial conditions and boundary conditions. For initial conditions, assume that in domain $\Omega$:
+If we would like to solve the PDE in practice, the initial conditions and (or) boundary conditions need to be specified. For initial conditions, assume that in domain $\Omega$:
 \begin{equation}
 T(x,y,0)=\phi(x,y) 
 \end{equation}
 
-As for boundary conditions, it could be devided into two different situations according to the domain $\Omega$. If $\Omega=\mathbb{R}^2$, we don't have to worry about the boundary, which means the equation can be solved soly based on the initial condition defined on $\mathbb{R}^2$. But if there is a boudary $\partial\Omega$, in this case, the boundary conditions can be described as: 
+As for boundary conditions, we should know either the value or the gradient of the function at some boundaries (i.e., fixed temperature or fixed flow).
+
+For fixed temperature, for example, at the boundary $x=0$, a boundary condition could be stated as follow:
 \begin{equation}
-T(x,y,t)|_{(x,y)\in\partial\Omega} =g(x,y,t) 
+T(0, y, t)=0
+\end{equation}  
+such a boundary condition means the temperature will always be $0$ at the line $x=0$ of the 2D plane.
+
+The boundary condition could aslo be a fixed flow. For example, at the boundary $x=0$:
+\begin{equation}
+\nabla (0, y, t)=0
 \end{equation}
+such a boundary condition means that there is no heat transfer at the line $x=0$ of the 2D plane.
+
+When the conditions are given, it is the time to solve the PDE. Most simple PDEs can be solved using analytical methods, such as separation of variables and transform techniques. If the analytical methods do not work, numerical methods can be implemented to find the numerical approximations to the solutions of the PDE. A practical example with boundary conditions will be given in Section 2.3, where the analytical solution will be derived.
+
+Once a system has been solved, we could enhance it by implementing the optimization. One thing we could do is to add some controls. For example, we would like the temperature of a plane less as stable as possible. A proper cost function could be a mathematical expression giving $\ud T/\ud t$ as a function of the external heat sourse. Tools such as Kalman filter can be implemented to do the optimization. A real world example is in aircraft temperature monitoring, for which temperature changes that above a threshold should be warned. 
+

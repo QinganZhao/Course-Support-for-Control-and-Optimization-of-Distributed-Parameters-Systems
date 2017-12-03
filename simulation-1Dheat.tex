@@ -125,13 +125,15 @@ We provide an implementation in Matlab.
 \end{figure}
  
 \paragraph{Interpretation}
-The results we obtain are consistent with our model and the physical characteristics. We can see that from the visualization the temperature falls off as $\frac{1}{x^2}$, which is 
-consitent with the theoretical definition of the Fourier number as described above. We can see pathlines of the heat front evolve quadratically over time, especially when looking 
-at the system from above. 
+The results we obtain are consistent with our model and the physical characteristics. We can see that from the visualization the temperature varies in a logarithmic manner, which is 
+consitent with the fact that the Forward Euler scheme approximates the exact mathematical solution to the 2nd order PDE, which takes the form of an exponential. The exact rate at which heat moves through the rod is 
+dependent on the thermal conductivity of the material, which makes up part of the exponent (i.e. $e^{-m}$), thus governing the rate. 
+We can see pathlines of the heat front evolve over time, especially when looking 
+at the system from above. Given enough time, the rod will reach a steady state, which in this example would have the rod rest at a completely uniform temperature, since we have not incorporated any form of heat losses or sinks in the system.
 
  \paragraph{Conclusion}
 Here we have learned that in examining systems such as the heated rod, we can safely analyze it as a 1D system. We were able to discretize the partial differential equations and 
 apply a forward Euler simluation to yield phyiscally relevant and meaningful simulations. Through the Matlab visualization, we gain a better understanding of how heat is moving 
-through the rod and the system. From the resources and analysis provided, it is trivial to create other iinitial/boundary conditions and repeat the simulations to garner a deeper
+through the rod and the system. From the resources and analysis provided, it is trivial to create other initial/boundary conditions and repeat the simulations to garner a deeper
 insight into the heat behaviour. This is left as an exercise to the reader. 
  
