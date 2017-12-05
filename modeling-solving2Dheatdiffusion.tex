@@ -76,23 +76,23 @@ X(a)=0
 
 Hence, the problem becomes solving two indenpendent ordinary differential equations. We know that only when $\lambda=\frac{n^2\pi^2}{a^2}\ (n=1,2,3,...)$, the problem has the following solution:
 \begin{equation}
-X_n(x)=\sqrt{\frac{2}{a}}sin\frac{n\pi x}{a}
+X_n(x)=sin\frac{n\pi x}{a}
 \end{equation}
 \begin{equation}
-Y_n(y)=a_ne^{\frac{n\pi}{a}y}+b_n^{-\frac{n\pi}{a}y}
+Y_n(y)=a_ne^{\frac{n\pi}{a}y}+b_ne^{-\frac{n\pi}{a}y}
 \end{equation}
 
 Hence, the solution can be expressed as:
 \begin{equation}
-T(x,y)=\sqrt{\frac{2}{a}}\sum_{n=1}^{\infty}(a_ne^{\frac{n\pi}{a}y}+b_n^{-\frac{n\pi}{a}y})sin\frac{n\pi x}{a}
+T(x,y)=\sum_{n=1}^{\infty}(a_ne^{\frac{n\pi}{a}y}+b_ne^{-\frac{n\pi}{a}y})sin\frac{n\pi x}{a}
 \end{equation}
 
 Given the other two boundary conditions Equations~(\ref{2DHeatBound1.eq})-(\ref{2DHeatBound2.eq}), $a_n$ and $b_n$ can be solved using the following 2 equations:
 \begin{equation}
-a_n+b_n=\sqrt{\frac{2}{a}}\int_{0}^{a}f(x)sin\frac{n\pi}{a}xdx
+a_n+b_n=\int_{0}^{a}f(x)sin\frac{n\pi}{a}xdx
 \end{equation}
 \begin{equation}
-a_ne^{\frac{n\pi}{a}b}+b_ne^{-\frac{n\pi}{a}b}=\sqrt{\frac{2}{a}}\int_{0}^{a}g(x)sin\frac{n\pi}{a}xdx
+a_ne^{\frac{n\pi}{a}b}+b_ne^{-\frac{n\pi}{a}b}=\int_{0}^{a}g(x)sin\frac{n\pi}{a}xdx
 \end{equation}
 
 Thus, the analytical solution of this problem is solved.
